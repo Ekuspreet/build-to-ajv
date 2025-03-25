@@ -32,7 +32,7 @@ export function mergeTagObjectRecords(
 
 		tags2.forEach((tag) => {
 			if (tagMap.has(tag.code)) {
-				const existingTag = tagMap.get(tag.code);
+				const existingTag = (tagMap.get(tag.code) || {description : "", reference : "", required: "", list : ""});
 				// Deep merge logic for TagInfo, adjust according to your needs
 				existingTag.description = tag.description
 					? tag.description
@@ -81,7 +81,7 @@ export function tagsFromApi(yamlData: string) {
 }
 
 export function tagsFromApiObj(obj: any) {
-	let data = {};
+	let data: Record<string,any> = {};
 	for (const key in obj) {
 		data[key] = listDetailedPaths(obj[key]);
 	}
@@ -89,7 +89,7 @@ export function tagsFromApiObj(obj: any) {
 }
 
 export function tagsToNested(data: Record<string, TagObject[]>) {
-	let nestedData = {};
+	let nestedData: Record<string,any> = {};
 	for (const key in data) {
 		nestedData[key] = convertDetailedPathsToNestedObjects(data[key]);
 	}
@@ -97,7 +97,7 @@ export function tagsToNested(data: Record<string, TagObject[]>) {
 }
 
 function listDetailedPaths(obj: Record<string, any>) {
-	let detailedPaths = [];
+	let detailedPaths: TagObject[] = [];
 	detailedPaths = explorePaths(obj, "", detailedPaths);
 	return detailedPaths;
 }
@@ -133,10 +133,10 @@ function explorePaths(
 }
 
 function convertDetailedPathsToNestedObjects(detailedPaths: TagObject[]) {
-	function setPath(obj, path, value) {
+	function setPath(obj: any, path: any, value: any) {
 		const keys = path.split(".");
 		const lastKey = keys.pop();
-		const lastObj = keys.reduce((obj, key) => (obj[key] = obj[key] || {}), obj);
+		const lastObj = keys.reduce((obj:any, key:any) => (obj[key] = obj[key] || {}), obj);
 		lastObj[lastKey] = value;
 	}
 	const nestedObject = {};

@@ -83,12 +83,14 @@ export function findClosestJsonPath(
 	}
 	// Normalize the invalid path
 	const normalizedInvalidPath = normalizePath(invalidPath);
+	console.log("🚀 ~ normalizedInvalidPath:", normalizedInvalidPath, ' ', invalidPath)
 
 	let closestPath: string = validPaths[0];
 	let smallestDistance: number = levenshteinDistance(
 		normalizedInvalidPath,
 		normalizePath(validPaths[0])
 	);
+	console.log("🚀 ~ smallestDistance:", smallestDistance)
 
 	for (let i = 1; i < validPaths.length; i++) {
 		const currentPath = validPaths[i];

@@ -19,6 +19,6 @@
     "@types/json-schema": "^7.0.15",
     "clipboardy": "^4.0.0",
     "js-yaml": "^4.1.0",
-    "ondc-code-generator": "^0.1.4"
+    "ondc-code-generator": "^0.1.8"
   }
 }

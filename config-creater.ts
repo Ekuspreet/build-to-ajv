@@ -29,6 +29,7 @@ export async function CREATE_BASE_VALIDATIONS(
 	const tagData = generateTagsValidations(givenTags);
 	for (const key in data) {
 		const attr = data[key].l1_attributes;
+		console.log(attr)
 		let enums = data[key].l1_enums;
 		const enum_output: any[] = [];
 		if (!attr) {
