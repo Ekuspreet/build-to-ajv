@@ -1,4 +1,19 @@
 search:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.city
+      - $.context.core_version
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.intent.fulfillment.end.location.area_code
+      - $.message.intent.fulfillment.end.location.area_code
   l1_enums:
     - path: $.context.domain
       enums:
@@ -22,18 +37,26 @@ select:
     B2C:
       - $.context.domain
       - $.context.action
-      - $.context.country
-      - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
       - $.context.bpp_id
       - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
+      - $.context.city
+      - $.context.country
       - $.context.timestamp
       - $.context.ttl
       - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.count
+      - $.message.order.items[*].id
+      - $.message.order.fulfillments[*].end.gps
+      - $.message.order.fulfillments[*].end.address.area_code
+      - $.message.order.payment
+      - $.message.order.offers[*].id
   l1_enums:
     - path: $.context.domain
       enums:
@@ -63,29 +86,43 @@ init:
     B2C:
       - $.context.domain
       - $.context.action
-      - $.context.country
-      - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
       - $.context.bpp_id
+      - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
+      - $.context.city
+      - $.context.country
       - $.context.timestamp
       - $.context.ttl
       - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.count
+      - $.message.order.items[*].id
+      - $.message.order.items[*].fulfillment_id
       - $.message.order.billing.address.building
       - $.message.order.billing.address.city
       - $.message.order.billing.address.state
       - $.message.order.billing.address.country
       - $.message.order.billing.address.area_code
       - $.message.order.billing.address.locality
-      - $.message.order.billing.address.name
       - $.message.order.billing.phone
       - $.message.order.billing.name
-      - $.message.order.billing.email
       - $.message.order.billing.created_at
       - $.message.order.billing.updated_at
+      - $.message.order.fulfillments[*].id
+      - $.message.order.fulfillments[*].end.contact.email
+      - $.message.order.fulfillments[*].end.contact.phone
+      - $.message.order.fulfillments[*].end.location.gps
+      - $.message.order.fulfillments[*].end.location.address.building
+      - $.message.order.fulfillments[*].end.location.address.city
+      - $.message.order.fulfillments[*].end.location.address.state
+      - $.message.order.fulfillments[*].end.location.address.country
+      - $.message.order.fulfillments[*].end.location.address.area_code
+      - $.message.order.fulfillments[*].end.location.address.locality
   l1_enums:
     - path: $.context.domain
       enums:
@@ -108,32 +145,78 @@ confirm:
   l1_attributes:
     B2C:
       - $.context.domain
-      - $.context.action
       - $.context.country
+      - $.context.city
       - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
-      - $.context.bpp_id
+      - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
       - $.context.timestamp
+      - $.context.bpp_id
       - $.context.ttl
       - $.message.order.id
       - $.message.order.state
+      - $.message.order.billing.address.name
       - $.message.order.billing.address.building
+      - $.message.order.billing.address.locality
       - $.message.order.billing.address.city
       - $.message.order.billing.address.state
       - $.message.order.billing.address.country
       - $.message.order.billing.address.area_code
-      - $.message.order.billing.address.locality
-      - $.message.order.billing.address.name
       - $.message.order.billing.phone
-      - $.message.order.billing.name
       - $.message.order.billing.email
       - $.message.order.billing.created_at
       - $.message.order.billing.updated_at
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.maximum.count
+      - $.message.order.items[*].fulfillment_id
       - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.payment.uri
+      - $.message.order.payment.tl_method
+      - $.message.order.payment.params.amount
+      - $.message.order.payment.params.currency
+      - $.message.order.payment.params.transaction_id
+      - $.message.order.payment.status
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].beneficiary_name
+      - $.message.order.payment['@ondc/org/settlement_details'][*].bank_name
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_bank_account_no
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_ifsc_code
+      - $.message.order.payment['@ondc/org/settlement_details'][*].upi_address
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_counterparty
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_phase
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_type
+      - $.message.order.payment['@ondc/org/settlement_details'][*].branch_name
+      - $.message.order.payment.type
+      - $.message.order.payment.collected_by
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_type']
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_amount']
+      - $.message.order.payment['@ondc/org/settlement_basis']
+      - $.message.order.payment['@ondc/org/settlement_window']
+      - $.message.order.payment['@ondc/org/withholding_amount']
+      - $.message.order.created_at
+      - $.message.order.updated_at
+      - $.message.order.billing.address.locality
+      - $.message.order.billing.address.name
+      - $.message.order.fulfillments[*].type
+      - $.message.order.quote.price.currency
+      - $.message.order.quote.price.value
+      - $.message.order.quote.breakup[*]['@ondc/org/item_id']
+      - $.message.order.quote.breakup[*]['@ondc/org/item_quantity'].count
+      - $.message.order.quote.breakup[*].title
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
   l1_enums:
     - path: $.context.domain
       enums:
@@ -224,6 +307,22 @@ status:
         - code: ONDC:RET18
         - code: ONDC:RET19
 track:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.city
+      - $.context.core_version
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order_id
   l1_enums:
     - path: $.context.domain
       enums:
@@ -241,20 +340,22 @@ cancel:
   l1_attributes:
     B2C:
       - $.context.domain
-      - $.context.action
       - $.context.country
+      - $.context.city
       - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
-      - $.context.bpp_id
       - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
       - $.context.timestamp
+      - $.context.bpp_id
       - $.context.ttl
       - $.message.order_id
       - $.message.cancellation_reason_id
+      - $.message.descriptor.name
+      - $.message.descriptor.short_desc
   l1_enums:
     - path: $.context.domain
       enums:
@@ -269,6 +370,36 @@ cancel:
         - code: ONDC:RET18
         - code: ONDC:RET19
 update:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.country
+      - $.context.city
+      - $.context.action
+      - $.context.core_version
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.update_target
+      - $.message.order.id
+      - $.message.order.fulfillments[*].id
+      - $.message.order.fulfillments[*].type
+      - $.message.order.fulfillments[*].type
+      - $.message.order.fulfillments[*].tags.name
+      - $.message.order.fulfillments[*].tags.code
+      - $.message.order.fulfillments[*].tags.code
+      - $.message.order.fulfillments[*].tags.code
+      - $.message.order.fulfillments[*].tags.name
+      - $.message.order.fulfillments[*].tags.code
+      - $.message.order.fulfillments[*].tags.code
+      - $.message.order.fulfillments[*].tags.name
+      - $.message.order.fulfillments[*].tags.code
+      - $.message.order.fulfillments[*].tags.name
   l1_enums:
     - path: $.context.domain
       enums:
@@ -323,6 +454,77 @@ update:
         - code: Delivery
         - code: Return
 on_search:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.core_version
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.city
+      - $.message.intent['bpp/fulfillments'][*].id
+      - $.message.intent['bpp/fulfillments'][*].type
+      - $.message.intent['bpp/descriptor'].name
+      - $.message.intent['bpp/descriptor'].symbol
+      - $.message.intent['bpp/descriptor'].short_desc
+      - $.message.intent['bpp/descriptor'].long_desc
+      - $.message.intent['bpp/descriptor'].images[*]
+      - $.message.intent['bpp/providers'][*].id
+      - $.message.intent['bpp/providers'][*].descriptor.name
+      - $.message.intent['bpp/providers'][*].descriptor.symbol
+      - $.message.intent['bpp/providers'][*].descriptor.short_desc
+      - $.message.intent['bpp/providers'][*].descriptor.long_desc
+      - $.message.intent['bpp/providers'][*].descriptor.images[*]
+      - $.message.intent['bpp/providers'][*].ttl
+      - $.message.intent['bpp/providers'][*].descriptor.name
+      - $.message.intent['bpp/providers'][*].descriptor.symbol
+      - $.message.intent['bpp/providers'][*].descriptor.short_desc
+      - $.message.intent['bpp/providers'][*].descriptor.long_desc
+      - $.message.intent['bpp/providers'][*].descriptor.images[*]
+      - $.message.intent['bpp/providers'][*].items[*].price.currency
+      - $.message.intent['bpp/providers'][*].items[*].price.value
+      - $.message.intent['bpp/providers'][*].items[*].price.maximum_value
+      - >-
+        $.message.intent['bpp/providers'][*].items[*].quantity.unitized.measure.unit
+      - >-
+        $.message.intent['bpp/providers'][*].items[*].quantity.unitized.measure.value
+      - $.message.intent['bpp/providers'][*].items[*].quantity.unitized.count
+      - $.message.intent['bpp/providers'][*].items[*].quantity.available.count
+      - $.message.intent['bpp/providers'][*].items[*].quantity.maximum.count
+      - $.message.intent['bpp/providers'][*].items[*].quantity.maximum.count
+      - $.message.intent['bpp/providers'][*].category_id
+      - $.message.intent['bpp/providers'][*].items[*]['@ondc/org/returnable']
+      - $.message.intent['bpp/providers'][*].rating
+      - $.message.intent['bpp/providers'][*].items[*]['@ondc/org/cancellable']
+      - >-
+        $.message.intent['bpp/providers'][*].items[*]['@ondc/org/available_on_cod']
+      - $.message.intent['bpp/providers'][*].time.timestamp
+      - >-
+        $.message.intent['bpp/providers'][*].items[*].replacement_terms[*].replace_within.duration
+      - $.message.intent['bpp/providers'][*].items[*]['@ondc/org/return_window']
+      - >-
+        $.message.intent['bpp/providers'][*].items[*]['@ondc/org/seller_pickup_return']
+      - $.message.intent['bpp/providers'][*].items[*]['@ondc/org/time_to_ship']
+      - >-
+        $.message.intent['bpp/providers'][*].items[*]['@ondc/org/contact_details_consumer_care']
+      - $.message.intent['bpp/providers'][*].rating
+      - $.message.intent['bpp/providers'][*].fulfillments[*].type
+      - $.message.intent['bpp/providers'][*].time.label
+      - $.message.intent['bpp/providers'][*].time.timestamp
+      - $.message.intent['bpp/providers'][*].locations[*].id
+      - $.message.intent['bpp/providers'][*].locations[*].time.label
+      - $.message.intent['bpp/providers'][*].locations[*].time.timestamp
+      - $.message.intent['bpp/providers'][*].locations[*].time.range.start
+      - $.message.intent['bpp/providers'][*].categories[*].id
+      - $.message.intent['bpp/providers'][*].categories[*].descriptor.name
+      - $.message.intent['bpp/providers'][*].categories[*].descriptor.short_desc
+      - $.message.intent['bpp/providers'][*].categories[*].descriptor.long_desc
   l1_enums:
     - path: $.message.intent['bpp/fulfillments'][*].type
       enums:
@@ -355,21 +557,34 @@ on_select:
     B2C:
       - $.context.domain
       - $.context.action
-      - $.context.country
-      - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
       - $.context.bpp_id
       - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
+      - $.context.city
+      - $.context.country
       - $.context.timestamp
-      - $.context.ttl
       - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.items[*].id
+      - $.message.order.items[*].fulfillment_id
+      - $.message.order.fulfillments[*].id
+      - $.message.order.fulfillments[*].type
+      - $.message.order.fulfillments[*]['@ondc/org/category']
+      - $.message.order.fulfillments[*].tracking
+      - $.message.order.fulfillments[*]['@ondc/org/category']
+      - $.message.order.fulfillments[*]['@ondc/org/TAT']
+      - $.message.order.fulfillments[*].state.descriptor.code
+      - $.message.order.quote.ttl
       - $.message.order.quote.price.value
       - $.message.order.quote.price.currency
-      - $.message.order.quote.ttl
+      - $.message.order.quote.breakup[*]['@ondc/org/title_type']
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
+      - $.message.order.quote.breakup[*].title
   l1_enums:
     - path: $.context.domain
       enums:
@@ -412,28 +627,29 @@ on_init:
       - $.context.domain
       - $.context.action
       - $.context.country
-      - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
-      - $.context.bpp_id
+      - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
       - $.context.timestamp
-      - $.context.ttl
+      - $.context.bpp_id
+      - $.context.city
       - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.count
+      - $.message.order.items[*].fulfillment_id
+      - $.message.order.billing.name
       - $.message.order.billing.address.building
       - $.message.order.billing.address.city
       - $.message.order.billing.address.state
       - $.message.order.billing.address.country
       - $.message.order.billing.address.area_code
       - $.message.order.billing.address.locality
-      - $.message.order.billing.address.name
       - $.message.order.billing.phone
-      - $.message.order.billing.name
       - $.message.order.billing.email
-      - $.message.order.billing.created_at
-      - $.message.order.billing.updated_at
   l1_enums:
     - path: $.context.domain
       enums:
@@ -507,32 +723,93 @@ on_confirm:
   l1_attributes:
     B2C:
       - $.context.domain
-      - $.context.action
       - $.context.country
+      - $.context.city
       - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
       - $.context.bpp_id
+      - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
       - $.context.timestamp
-      - $.context.ttl
       - $.message.order.id
       - $.message.order.state
+      - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.count
+      - $.message.order.items[*].fulfillment_id
+      - $.message.order.billing.address.name
       - $.message.order.billing.address.building
+      - $.message.order.billing.address.locality
       - $.message.order.billing.address.city
       - $.message.order.billing.address.state
       - $.message.order.billing.address.country
       - $.message.order.billing.address.area_code
-      - $.message.order.billing.address.locality
-      - $.message.order.billing.address.name
       - $.message.order.billing.phone
-      - $.message.order.billing.name
       - $.message.order.billing.email
       - $.message.order.billing.created_at
       - $.message.order.billing.updated_at
-      - $.message.order.provider.id
+      - $.message.order.fulfillments[*].id
+      - $.message.order.fulfillments[*].provider_id
+      - $.message.order.fulfillments[*]['@ondc/org/provider_name']
+      - $.message.order.fulfillments[*].state.descriptor.code
+      - $.message.order.fulfillments[*].type
+      - $.message.order.fulfillments[*].tracking
+      - $.message.order.fulfillments[*]['@ondc/org/TAT']
+      - $.message.order.fulfillments[*].start.location.id
+      - $.message.order.fulfillments[*].start.location.descriptor.name
+      - $.message.order.fulfillments[*].start.location.gps
+      - $.message.order.fulfillments[*].end.location.gps
+      - $.message.order.fulfillments[*].end.location.address.name
+      - $.message.order.fulfillments[*].end.location.address.building
+      - $.message.order.fulfillments[*].end.location.address.locality
+      - $.message.order.fulfillments[*].end.location.address.city
+      - $.message.order.fulfillments[*].end.location.address.state
+      - $.message.order.fulfillments[*].end.location.address.country
+      - $.message.order.fulfillments[*].end.location.address.area_code
+      - $.message.order.fulfillments[*].end.person.name
+      - $.message.order.fulfillments[*].end.contact.phone
+      - $.message.order.fulfillments[*].end.contact.email
+      - $.message.order.quote.price.currency
+      - $.message.order.quote.price.value
+      - $.message.order.quote.breakup[*]['@ondc/org/item_id']
+      - $.message.order.quote.breakup[*]['@ondc/org/item_quantity'].count
+      - $.message.order.quote.breakup[*].title
+      - $.message.order.quote.breakup[*]['@ondc/org/title_type']
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
+      - $.message.order.quote.ttl
+      - $.message.order.payment.uri
+      - $.message.order.payment.tl_method
+      - $.message.order.payment.params.amount
+      - $.message.order.payment.params.currency
+      - $.message.order.payment.status
+      - $.message.order.payment.type
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_bank_account_no
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_ifsc_code
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].beneficiary_name
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_counterparty
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_phase
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_type
+      - $.message.order.payment['@ondc/org/settlement_details'][*].bank_name
+      - $.message.order.payment['@ondc/org/settlement_details'][*].branch_name
+      - $.message.order.payment.collected_by
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_type']
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_amount']
+      - $.message.order.created_at
+      - $.message.order.updated_at
+      - $.message.order.offers[*].id
   l1_enums:
     - path: $.context.domain
       enums:
@@ -633,6 +910,26 @@ on_confirm:
         - code: Completed
         - code: Cancelled
 on_track:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.city
+      - $.context.core_version
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.message.tracking.status
+      - $.message.tracking.id
+      - $.message.tracking.location.gps
+      - $.message.tracking.location.time.timestamp
+      - $.message.tracking.location.updated_at
+      - $.message.tracking.url
   l1_enums:
     - path: $.context.domain
       enums:
@@ -654,20 +951,101 @@ on_cancel:
   l1_attributes:
     B2C:
       - $.context.domain
-      - $.context.action
       - $.context.country
+      - $.context.city
       - $.context.action
-      - $.context.action
+      - $.context.core_version
       - $.context.bap_id
       - $.context.bap_uri
-      - $.context.bpp_id
       - $.context.bpp_uri
       - $.context.transaction_id
       - $.context.message_id
       - $.context.timestamp
-      - $.context.ttl
+      - $.context.bpp_id
       - $.message.order.state
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.count
+      - $.message.order.items[*].fulfillment_id
+      - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.billing.address.name
+      - $.message.order.billing.address.building
+      - $.message.order.billing.address.locality
+      - $.message.order.billing.address.city
+      - $.message.order.billing.address.state
+      - $.message.order.billing.address.country
+      - $.message.order.billing.address.area_code
+      - $.message.order.billing.phone
+      - $.message.order.billing.email
+      - $.message.order.billing.created_at
+      - $.message.order.billing.updated_at
+      - $.message.order.fulfillments[*].id
+      - $.message.order.fulfillments[*]['@ondc/org/provider_name']
+      - $.message.order.fulfillments[*]['@ondc/org/TAT']
+      - $.message.order.fulfillments[*].state.descriptor.code
+      - $.message.order.fulfillments[*].type
+      - $.message.order.fulfillments[*].tracking
+      - $.message.order.fulfillments[*].start.location.id
+      - $.message.order.fulfillments[*].start.location.descriptor.name
+      - $.message.order.fulfillments[*].start.location.gps
+      - $.message.order.fulfillments[*].start.location.address.locality
+      - $.message.order.fulfillments[*].start.location.address.city
+      - $.message.order.fulfillments[*].start.location.address.area_code
+      - $.message.order.fulfillments[*].start.location.address.state
+      - $.message.order.fulfillments[*].start.contact.email
+      - $.message.order.fulfillments[*].start.contact.phone
+      - $.message.order.fulfillments[*].end.person.name
+      - $.message.order.fulfillments[*].end.contact.email
+      - $.message.order.fulfillments[*].end.contact.phone
+      - $.message.order.fulfillments[*].end.location.gps
+      - $.message.order.fulfillments[*].end.location.address.name
+      - $.message.order.fulfillments[*].end.location.address.building
+      - $.message.order.fulfillments[*].end.location.address.locality
+      - $.message.order.fulfillments[*].end.location.address.city
+      - $.message.order.fulfillments[*].end.location.address.state
+      - $.message.order.fulfillments[*].end.location.address.country
+      - $.message.order.fulfillments[*].end.location.address.area_code
+      - $.message.order.quote.price.currency
+      - $.message.order.quote.price.value
+      - $.message.order.quote.breakup[*]['@ondc/org/item_id']
+      - $.message.order.quote.breakup[*]['@ondc/org/item_quantity'].count
+      - $.message.order.quote.breakup[*].title
+      - $.message.order.quote.breakup[*]['@ondc/org/title_type']
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
+      - $.message.order.quote.ttl
+      - $.message.order.payment.uri
+      - $.message.order.payment.tl_method
+      - $.message.order.payment.params.amount
+      - $.message.order.payment.params.currency
+      - $.message.order.payment.params.transaction_id
+      - $.message.order.payment.status
+      - $.message.order.payment.type
+      - $.message.order.payment.collected_by
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_type']
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_amount']
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_counterparty
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_phase
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_type
+      - $.message.order.payment['@ondc/org/settlement_details'][*].upi_address
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_bank_account_no
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_ifsc_code
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].beneficiary_name
+      - $.message.order.payment['@ondc/org/settlement_details'][*].bank_name
+      - $.message.order.payment['@ondc/org/settlement_details'][*].branch_name
       - $.message.order.id
+      - $.message.order.created_at
+      - $.message.order.updated_at
+      - $.message.order.payment.collected_by
+      - $.message.order.payment.time.range.end
   l1_enums:
     - path: $.context.domain
       enums:
@@ -746,6 +1124,97 @@ on_cancel:
         - code: delivery
         - code: return_window_expiry
 on_update:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.country
+      - $.context.city
+      - $.context.action
+      - $.context.core_version
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.message.order.id
+      - $.message.order.state
+      - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.count
+      - $.message.order.items[*].fulfillment_id
+      - $.message.order.quote.price.currency
+      - $.message.order.quote.price.value
+      - $.message.order.quote.breakup[*]['@ondc/org/title_type']
+      - $.message.order.billing.address.name
+      - $.message.order.billing.address.city
+      - $.message.order.billing.address.state
+      - $.message.order.billing.address.country
+      - $.message.order.billing.phone
+      - $.message.order.billing.email
+      - $.message.order.billing.updated_at
+      - $.message.order.fulfillments[*].id
+      - $.message.order.fulfillments[*]['@ondc/org/provider_name']
+      - $.message.order.fulfillments[*].state.descriptor.code
+      - $.message.order.fulfillments[*].type
+      - $.message.order.fulfillments[*].tracking
+      - $.message.order.fulfillments[*]['@ondc/org/TAT']
+      - $.message.order.fulfillments[*].start.location.id
+      - $.message.order.fulfillments[*].start.location.descriptor.name
+      - $.message.order.fulfillments[*].start.location.gps
+      - $.message.order.fulfillments[*].start.location.address.locality
+      - $.message.order.fulfillments[*].start.location.address.city
+      - $.message.order.fulfillments[*].start.location.address.area_code
+      - $.message.order.fulfillments[*].start.location.address.state
+      - $.message.order.fulfillments[*].start.instructions.code
+      - $.message.order.fulfillments[*].start.instructions.name
+      - $.message.order.fulfillments[*].start.instructions.short_desc
+      - $.message.order.fulfillments[*].start.instructions.long_desc
+      - $.message.order.fulfillments[*].start.contact.phone
+      - $.message.order.fulfillments[*].start.contact.email
+      - $.message.order.fulfillments[*].start.time.range.start
+      - $.message.order.fulfillments[*].start.time.range.end
+      - $.message.order.fulfillments[*].start.time.timestamp
+      - $.message.order.fulfillments[*].end.location.gps
+      - $.message.order.fulfillments[*].end.location.address.name
+      - $.message.order.fulfillments[*].end.location.address.building
+      - $.message.order.fulfillments[*].end.location.address.locality
+      - $.message.order.fulfillments[*].end.location.address.city
+      - $.message.order.fulfillments[*].end.location.address.state
+      - $.message.order.fulfillments[*].end.location.address.country
+      - $.message.order.fulfillments[*].end.location.address.area_code
+      - $.message.order.fulfillments[*].end.person.name
+      - $.message.order.fulfillments[*].end.contact.phone
+      - $.message.order.fulfillments[*].end.contact.email
+      - $.message.order.fulfillments[*].end.time.range.start
+      - $.message.order.fulfillments[*].end.time.range.end
+      - $.message.order.fulfillments[*].end.time.timestamp
+      - $.message.order.payment.params.amount
+      - $.message.order.payment.params.currency
+      - $.message.order.payment.params.transaction_id
+      - $.message.order.payment.status
+      - $.message.order.payment.type
+      - $.message.order.payment.collected_by
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_type']
+      - $.message.order.payment['@ondc/org/buyer_app_finder_fee_amount']
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_counterparty
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_phase
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_type
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].beneficiary_name
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_bank_account_no
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_ifsc_code
+      - $.message.order.payment['@ondc/org/settlement_details'][*].bank_name
+      - $.message.order.payment['@ondc/org/settlement_details'][*].branch_name
+      - $.message.order.created_at
+      - $.message.order.updated_at
   l1_enums:
     - path: $.context.domain
       enums:
@@ -841,6 +1310,96 @@ on_update:
         - code: Completed
         - code: Cancelled
 on_status:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.country
+      - $.context.city
+      - $.context.action
+      - $.context.core_version
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.message.order.id
+      - $.message.order.state
+      - $.message.order.provider.id
+      - $.message.order.provider.locations[*].id
+      - $.message.order.items[*].id
+      - $.message.order.items[*].quantity.count
+      - $.message.order.items[*].fulfillment_id
+      - $.message.order.billing.address.name
+      - $.message.order.billing.address.building
+      - $.message.order.billing.address.locality
+      - $.message.order.billing.address.city
+      - $.message.order.billing.address.state
+      - $.message.order.billing.address.country
+      - $.message.order.billing.address.area_code
+      - $.message.order.billing.phone
+      - $.message.order.billing.created_at
+      - $.message.order.billing.updated_at
+      - $.message.order.fulfillments[*].id
+      - $.message.order.fulfillments[*]['@ondc/org/provider_name']
+      - $.message.order.fulfillments[*].state.descriptor.code
+      - $.message.order.fulfillments[*].type
+      - $.message.order.fulfillments[*]['@ondc/org/TAT']
+      - $.message.order.fulfillments[*].start.location.id
+      - $.message.order.fulfillments[*].start.location.descriptor.name
+      - $.message.order.fulfillments[*].start.location.gps
+      - $.message.order.fulfillments[*].start.location.address.locality
+      - $.message.order.fulfillments[*].start.location.address.city
+      - $.message.order.fulfillments[*].start.location.address.area_code
+      - $.message.order.fulfillments[*].start.location.address.state
+      - $.message.order.fulfillments[*].start.instructions.name
+      - $.message.order.fulfillments[*].start.instructions.short_desc
+      - $.message.order.fulfillments[*].start.instructions.long_desc
+      - $.message.order.fulfillments[*].start.contact.phone
+      - $.message.order.fulfillments[*].start.time.range.start
+      - $.message.order.fulfillments[*].start.time.range.end
+      - $.message.order.fulfillments[*].start.time.timestamp
+      - $.message.order.fulfillments[*].end.location.gps
+      - $.message.order.fulfillments[*].end.location.address.name
+      - $.message.order.fulfillments[*].end.location.address.building
+      - $.message.order.fulfillments[*].end.location.address.locality
+      - $.message.order.fulfillments[*].end.location.address.city
+      - $.message.order.fulfillments[*].end.location.address.state
+      - $.message.order.fulfillments[*].end.location.address.country
+      - $.message.order.fulfillments[*].end.location.address.area_code
+      - $.message.order.fulfillments[*].end.person.name
+      - $.message.order.fulfillments[*].end.contact.phone
+      - $.message.order.fulfillments[*].end.contact.email
+      - $.message.order.fulfillments[*].end.time.range.start
+      - $.message.order.fulfillments[*].end.time.range.end
+      - $.message.order.fulfillments[*].end.time.timestamp
+      - $.message.order.quote.price.currency
+      - $.message.order.quote.price.value
+      - $.message.order.quote.breakup[*]['@ondc/org/item_id']
+      - $.message.order.quote.breakup[*]['@ondc/org/item_quantity'].count
+      - $.message.order.quote.breakup[*].title
+      - $.message.order.quote.breakup[*]['@ondc/org/title_type']
+      - $.message.order.quote.breakup[*].price.currency
+      - $.message.order.quote.breakup[*].price.value
+      - $.message.order.payment.uri
+      - $.message.order.payment.tl_method
+      - $.message.order.payment.params.amount
+      - $.message.order.payment.params.currency
+      - $.message.order.payment.params.transaction_id
+      - $.message.order.payment.status
+      - $.message.order.payment.type
+      - $.message.order.payment.collected_by
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_counterparty
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_type
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_bank_account_no
+      - >-
+        $.message.order.payment['@ondc/org/settlement_details'][*].settlement_ifsc_code
+      - $.message.order.created_at
+      - $.message.order.updated_at
   l1_enums:
     - path: $.context.domain
       enums:

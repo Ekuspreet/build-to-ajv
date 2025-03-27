@@ -137,7 +137,7 @@ function mergeStructure(structure: OriginalStructure): UnifiedStructure {
 
 	return merged;
 }
-const getActionCall = (key: string) => {
+export const getActionCall = (key: string) => {
     if (key.startsWith("on_")) {
         return `on_${key.split("_")[1]}`;
     }
@@ -154,7 +154,7 @@ function getRequiredPaths(structure: OriginalStructure) {
 			// Filter items with 'required' set to 'MANDATORY' and extract their paths
 			const requiredPaths = structure[cat][key]
 				.filter((item: any) => {
-					return item.required === "REQUIRED";
+					return (item.required.toUpperCase() === "REQUIRED" || item.required.toUpperCase() === "MANDATORY" );
 				})
 				.map((item: any) => {
 					return findClosestJsonPath(validPaths[getActionCall(key)] as any, item.path);

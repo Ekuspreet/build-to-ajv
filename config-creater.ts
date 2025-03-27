@@ -14,7 +14,7 @@ interface Val {
 }
 
 export async function CREATE_BASE_VALIDATIONS(
-	givenTags: any,
+	// givenTags: any,
 	apiListForDifference: Record<string, string>
 ) {
 	console.log("====================================");

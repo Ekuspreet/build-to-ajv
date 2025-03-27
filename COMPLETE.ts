@@ -21,7 +21,7 @@ const run = async () => {
 	await CREATE_FIRST();
 
 	const t = yaml.load(build) as any;
-	const tags = tagsFromApiObj(t["x-tags"]);
+	// const tags = tagsFromApiObj(t["x-tags"]);
 	const apiListForDifference = {
 		// search: "$.message.intent.fulfillment.vehicle.category",
 		// on_search:
@@ -32,7 +32,7 @@ const run = async () => {
 		// on_cancel: "$.message.order.fulfillments[*].vehicle.category",
 		// on_status: "$.message.order.fulfillments[*].vehicle.category",
 	};
-	const generated1 = await CREATE_BASE_VALIDATIONS(tags, apiListForDifference);
+	const generated1 = await CREATE_BASE_VALIDATIONS(apiListForDifference);
 	// const final = await mergeAttr({ _TESTS_: generated1 });
 	writeFileSync(
 		"./COMPLETE.json",
