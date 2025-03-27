@@ -14,6 +14,7 @@ export function ConvertAttributeFromBuildToTable(attributeData: X_ATTRIBUTES) {
 		let sheets: AttributeType = {};
 		for (const attrSet in attributeData[key].attribute_set) {
 			const element = attributeData[key].attribute_set[attrSet];
+			
 			const list = listDetailedPaths(element as AttributeSection);
 			sheets[attrSet] = list;
 		}
@@ -23,7 +24,6 @@ export function ConvertAttributeFromBuildToTable(attributeData: X_ATTRIBUTES) {
 	// const merged = mergeStructure(pages);
 
 	const final = getRequiredPaths(pages);
-
 	return final;
 }
 
@@ -137,22 +137,27 @@ function mergeStructure(structure: OriginalStructure): UnifiedStructure {
 
 	return merged;
 }
-
+const getActionCall = (key: string) => {
+    if (key.startsWith("on_")) {
+        return `on_${key.split("_")[1]}`;
+    }
+    
+    return key.split("_")[0];
+};
 function getRequiredPaths(structure: OriginalStructure) {
 	const result: OriginalStructure = {};
 	const ymlData = readFileSync("./validPaths.json", "utf8");
 	const validPaths = JSON.parse(ymlData) as any;
-
 	for (const cat in structure) {
 		result[cat] = {};
 		for (const key in structure[cat]) {
 			// Filter items with 'required' set to 'MANDATORY' and extract their paths
 			const requiredPaths = structure[cat][key]
 				.filter((item: any) => {
-					return item.required === "MANDATORY";
+					return item.required === "REQUIRED";
 				})
 				.map((item: any) => {
-					return findClosestJsonPath(validPaths[key] as any, item.path);
+					return findClosestJsonPath(validPaths[getActionCall(key)] as any, item.path);
 				});
 			// Only add the key to the result if there are required paths
 			if (requiredPaths.length > 0) {

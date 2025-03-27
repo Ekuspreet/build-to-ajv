@@ -27,7 +27,9 @@ export const CREATE_FIRST = async () => {
 	const enums = data["x-enum"];
 	const enumData = enumsFromObj(enums);
 	const attri = data["x-attributes"];
+
 	const extractedAttr = ConvertAttributeFromBuildToTable(attri);
+
 	for (const targetApi of apis) {
 		// const existingSchema =
 		// 	paths[`/${targetApi}`].post.requestBody.content["application/json"]

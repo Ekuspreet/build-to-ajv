@@ -18,6 +18,22 @@ search:
         - code: Self-Pickup
         - code: Delivery and Self-Pickup
 select:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order.provider.id
   l1_enums:
     - path: $.context.domain
       enums:
@@ -43,6 +59,33 @@ select:
         - code: ON-FULFILLMENT
         - code: POST-FULFILLMENT
 init:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order.provider.id
+      - $.message.order.billing.address.building
+      - $.message.order.billing.address.city
+      - $.message.order.billing.address.state
+      - $.message.order.billing.address.country
+      - $.message.order.billing.address.area_code
+      - $.message.order.billing.address.locality
+      - $.message.order.billing.address.name
+      - $.message.order.billing.phone
+      - $.message.order.billing.name
+      - $.message.order.billing.email
+      - $.message.order.billing.created_at
+      - $.message.order.billing.updated_at
   l1_enums:
     - path: $.context.domain
       enums:
@@ -62,6 +105,35 @@ init:
         - code: Self-Pickup
         - code: Delivery and Self-Pickup
 confirm:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order.id
+      - $.message.order.state
+      - $.message.order.billing.address.building
+      - $.message.order.billing.address.city
+      - $.message.order.billing.address.state
+      - $.message.order.billing.address.country
+      - $.message.order.billing.address.area_code
+      - $.message.order.billing.address.locality
+      - $.message.order.billing.address.name
+      - $.message.order.billing.phone
+      - $.message.order.billing.name
+      - $.message.order.billing.email
+      - $.message.order.billing.created_at
+      - $.message.order.billing.updated_at
+      - $.message.order.provider.id
   l1_enums:
     - path: $.context.domain
       enums:
@@ -166,6 +238,23 @@ track:
         - code: ONDC:RET18
         - code: ONDC:RET19
 cancel:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order_id
+      - $.message.cancellation_reason_id
   l1_enums:
     - path: $.context.domain
       enums:
@@ -262,6 +351,25 @@ on_search:
         - code: BuyXGetY
         - code: Freebie
 on_select:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order.provider.id
+      - $.message.order.quote.price.value
+      - $.message.order.quote.price.currency
+      - $.message.order.quote.ttl
   l1_enums:
     - path: $.context.domain
       enums:
@@ -299,6 +407,33 @@ on_select:
         - code: 0
         - code: 10
 on_init:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order.provider.id
+      - $.message.order.billing.address.building
+      - $.message.order.billing.address.city
+      - $.message.order.billing.address.state
+      - $.message.order.billing.address.country
+      - $.message.order.billing.address.area_code
+      - $.message.order.billing.address.locality
+      - $.message.order.billing.address.name
+      - $.message.order.billing.phone
+      - $.message.order.billing.name
+      - $.message.order.billing.email
+      - $.message.order.billing.created_at
+      - $.message.order.billing.updated_at
   l1_enums:
     - path: $.context.domain
       enums:
@@ -369,6 +504,35 @@ on_init:
         - code: BPP
         - code: SOR
 on_confirm:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order.id
+      - $.message.order.state
+      - $.message.order.billing.address.building
+      - $.message.order.billing.address.city
+      - $.message.order.billing.address.state
+      - $.message.order.billing.address.country
+      - $.message.order.billing.address.area_code
+      - $.message.order.billing.address.locality
+      - $.message.order.billing.address.name
+      - $.message.order.billing.phone
+      - $.message.order.billing.name
+      - $.message.order.billing.email
+      - $.message.order.billing.created_at
+      - $.message.order.billing.updated_at
+      - $.message.order.provider.id
   l1_enums:
     - path: $.context.domain
       enums:
@@ -487,6 +651,23 @@ on_track:
         - code: active
         - code: inactive
 on_cancel:
+  l1_attributes:
+    B2C:
+      - $.context.domain
+      - $.context.action
+      - $.context.country
+      - $.context.action
+      - $.context.action
+      - $.context.bap_id
+      - $.context.bap_uri
+      - $.context.bpp_id
+      - $.context.bpp_uri
+      - $.context.transaction_id
+      - $.context.message_id
+      - $.context.timestamp
+      - $.context.ttl
+      - $.message.order.state
+      - $.message.order.id
   l1_enums:
     - path: $.context.domain
       enums:

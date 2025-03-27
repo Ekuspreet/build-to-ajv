@@ -19,12 +19,9 @@ type TagData = {
 
 function formatJsonPathWithValue(path: string, value: string): string {
 	// Match the last occurrence of `[*]` and capture the preceding path
-
 	const match = path.match(/^(.*)\[\*\](.*)$/);
 	if (!match) {
-		console.log("paths", path , value);
-		return "HelloLittleJohny"
-		// throw new Error("Invalid path format. Path must contain '[*]'.");
+		throw new Error("Invalid path format. Path must contain '[*]'.");
 	}
 	// console.log(path);
 	const basePath = match[1]; // Path before the last [*]
@@ -44,14 +41,12 @@ export function generateTagsValidations(givenTags: Record<string, TagData>) {
 		const apiData: TagData = givenTags[api as keyOfTags];
 		let i = 0;
 		for (const tagsWithSameBase of apiData) {
-			console.log("tagsWithSameBase", tagsWithSameBase);
 			const basePath = tagsWithSameBase.path;
 			const appendPath = basePath + "[*].code";
 			const mostSimilarPath = findClosestJsonPath(
 				validPaths[api as keyof typeof validPaths],
 				appendPath
 			) as string;
-			console.log("most similar finding", mostSimilarPath, appendPath);
 			const allCodes = tagsWithSameBase.tag.map((tag) => tag.code);
 			const newConfig = {
 				_NAME_: `validate_tag_${i}`,
@@ -63,7 +58,7 @@ export function generateTagsValidations(givenTags: Record<string, TagData>) {
 			finalValidations[api].push(newConfig);
 			for (const tag of tagsWithSameBase.tag) {
 				const newPath = formatJsonPathWithValue(mostSimilarPath, tag.code);
-				// console.log("TAG : ",tag.list?.allOf)
+				console.log(`For Path ${newPath}`)
 				console.dir(tag.list, {depth : null})
 				const newConfig = {
 					_NAME_: `validate_tag_${i}_${tag.code}`,

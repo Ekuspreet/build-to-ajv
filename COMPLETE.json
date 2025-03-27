@@ -1,4 +1,1718 @@
 {
-  "_TESTS_": {},
+  "_TESTS_": {
+    "select": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_URI",
+        "attr": "$.context.bpp_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID",
+        "attr": "$.message.order.provider.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE",
+        "enumList": [
+          "Disc_Pct",
+          "Disc_Amt",
+          "BuyXGetY",
+          "Freebie"
+        ],
+        "enumPath": "$.message.order.offers[*].tags.code",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENT",
+        "enumList": [
+          "ON-ORDER",
+          "ON-FULFILLMENT",
+          "POST-FULFILLMENT"
+        ],
+        "enumPath": "$.message.order.payment",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ],
+    "init": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID",
+        "attr": "$.message.order.provider.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_BUILDING",
+        "attr": "$.message.order.billing.address.building",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CITY",
+        "attr": "$.message.order.billing.address.city",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_STATE",
+        "attr": "$.message.order.billing.address.state",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_COUNTRY",
+        "attr": "$.message.order.billing.address.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_AREA_CODE",
+        "attr": "$.message.order.billing.address.area_code",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_LOCALITY",
+        "attr": "$.message.order.billing.address.locality",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME",
+        "attr": "$.message.order.billing.address.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_PHONE",
+        "attr": "$.message.order.billing.phone",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME_22",
+        "attr": "$.message.order.billing.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_EMAIL",
+        "attr": "$.message.order.billing.email",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CREATED_AT",
+        "attr": "$.message.order.billing.created_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_UPDATED_AT",
+        "attr": "$.message.order.billing.updated_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE",
+        "enumList": [
+          "Delivery",
+          "Self-Pickup",
+          "Delivery and Self-Pickup"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ],
+    "confirm": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID",
+        "attr": "$.message.order.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_STATE",
+        "attr": "$.message.order.state",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "Created",
+          "Accepted",
+          "In-progress",
+          "Completed",
+          "Cancelled"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_BUILDING",
+        "attr": "$.message.order.billing.address.building",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CITY",
+        "attr": "$.message.order.billing.address.city",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_STATE_17",
+        "attr": "$.message.order.billing.address.state",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_COUNTRY",
+        "attr": "$.message.order.billing.address.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_AREA_CODE",
+        "attr": "$.message.order.billing.address.area_code",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_LOCALITY",
+        "attr": "$.message.order.billing.address.locality",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME",
+        "attr": "$.message.order.billing.address.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_PHONE",
+        "attr": "$.message.order.billing.phone",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME_23",
+        "attr": "$.message.order.billing.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_EMAIL",
+        "attr": "$.message.order.billing.email",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CREATED_AT",
+        "attr": "$.message.order.billing.created_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_UPDATED_AT",
+        "attr": "$.message.order.billing.updated_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID_27",
+        "attr": "$.message.order.provider.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE",
+        "enumList": [
+          "Delivery",
+          "Self-Pickup",
+          "Delivery and Self-Pickup"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_BREAKUPONDCORGTITLE_TYPE",
+        "enumList": [
+          "item",
+          "delivery",
+          "packing",
+          "tax",
+          "misc",
+          "discount",
+          "discount_f",
+          "tax_f",
+          0
+        ],
+        "enumPath": "$.message.order.quote.breakup[*]['@ondc/org/title_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT",
+        "enumList": [
+          0,
+          99
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.available.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT_5",
+        "enumList": [
+          0,
+          10
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.maximum.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE_6",
+        "enumList": [
+          "ON-ORDER",
+          "ON-FULFILLMENT",
+          "POST-FULFILLMENT"
+        ],
+        "enumPath": "$.message.order.payment.type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_SETTLEMENT_TYPE",
+        "enumList": [
+          "upi",
+          "neft",
+          "rtgs",
+          "wallet",
+          "netbanking",
+          "paylater"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/settlement_details'][*].settlement_type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENTONDCORGBUYER_APP_FINDER_FEE_TYPE",
+        "enumList": [
+          "percent",
+          "amount"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/buyer_app_finder_fee_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COLLECTED_BY",
+        "enumList": [
+          "BAP",
+          "BPP"
+        ],
+        "enumPath": "$.message.order.payment.collected_by",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_STATUS",
+        "enumList": [
+          "PAID",
+          "NOT-PAID"
+        ],
+        "enumPath": "$.message.order.payment.status",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENTONDCORGSETTLEMENT_BASIS",
+        "enumList": [
+          "shipment",
+          "delivery",
+          "return_window_expiry"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/settlement_basis']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_STATE",
+        "enumList": [
+          "Created",
+          "Accepted",
+          "In-progress",
+          "Completed",
+          "Cancelled"
+        ],
+        "enumPath": "$.message.order.state",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ],
+    "cancel": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_URI",
+        "attr": "$.context.bpp_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ORDER_ID",
+        "attr": "$.message.order_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CANCELLATION_REASON_ID",
+        "attr": "$.message.cancellation_reason_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ],
+    "on_select": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_URI",
+        "attr": "$.context.bpp_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID",
+        "attr": "$.message.order.provider.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_VALUE",
+        "attr": "$.message.order.quote.price.value",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CURRENCY",
+        "attr": "$.message.order.quote.price.currency",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_TTL",
+        "attr": "$.message.order.quote.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE",
+        "enumList": [
+          "Serviceable",
+          "Non-Serviceable"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].state.descriptor.code",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_BREAKUPONDCORGTITLE_TYPE",
+        "enumList": [
+          "item",
+          "delivery",
+          "packing",
+          "tax",
+          "misc",
+          "discount",
+          "discount_f",
+          "tax_f",
+          0
+        ],
+        "enumPath": "$.message.order.quote.breakup[*]['@ondc/org/title_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT",
+        "enumList": [
+          0,
+          99
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.available.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT_5",
+        "enumList": [
+          0,
+          10
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.maximum.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ],
+    "on_init": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID",
+        "attr": "$.message.order.provider.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_BUILDING",
+        "attr": "$.message.order.billing.address.building",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CITY",
+        "attr": "$.message.order.billing.address.city",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_STATE",
+        "attr": "$.message.order.billing.address.state",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_COUNTRY",
+        "attr": "$.message.order.billing.address.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_AREA_CODE",
+        "attr": "$.message.order.billing.address.area_code",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_LOCALITY",
+        "attr": "$.message.order.billing.address.locality",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME",
+        "attr": "$.message.order.billing.address.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_PHONE",
+        "attr": "$.message.order.billing.phone",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME_22",
+        "attr": "$.message.order.billing.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_EMAIL",
+        "attr": "$.message.order.billing.email",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CREATED_AT",
+        "attr": "$.message.order.billing.created_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_UPDATED_AT",
+        "attr": "$.message.order.billing.updated_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE",
+        "enumList": [
+          "Delivery",
+          "Self-Pickup",
+          "Delivery and Self-Pickup"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_BREAKUPONDCORGTITLE_TYPE",
+        "enumList": [
+          "item",
+          "delivery",
+          "packing",
+          "tax",
+          "misc",
+          "discount",
+          "discount_f",
+          "tax_f",
+          0
+        ],
+        "enumPath": "$.message.order.quote.breakup[*]['@ondc/org/title_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT",
+        "enumList": [
+          0,
+          99
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.available.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT_5",
+        "enumList": [
+          0,
+          10
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.maximum.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE",
+        "enumList": [
+          "Pending",
+          "Packed",
+          "Pickup-approved",
+          "Pickup-rejected",
+          "Order-picked-up",
+          "Out-for-delivery",
+          "Order-delivered",
+          "RTO-Initiated",
+          "RTO-Delivered",
+          "RTO-Disposed"
+        ],
+        "enumPath": "$.message.order.cancellation_terms[*].fulfillment_state.descriptor.code",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE_7",
+        "enumList": [
+          "ON-ORDER",
+          "ON-FULFILLMENT",
+          "POST-FULFILLMENT"
+        ],
+        "enumPath": "$.message.order.payment.type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_SETTLEMENT_TYPE",
+        "enumList": [
+          "upi",
+          "neft",
+          "rtgs"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/settlement_details'][*].settlement_type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENTONDCORGBUYER_APP_FINDER_FEE_TYPE",
+        "enumList": [
+          "percent",
+          "amount"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/buyer_app_finder_fee_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COLLECTED_BY",
+        "enumList": [
+          "BAP",
+          "BPP",
+          "SOR"
+        ],
+        "enumPath": "$.message.order.payment.collected_by",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ],
+    "on_confirm": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID",
+        "attr": "$.message.order.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_STATE",
+        "attr": "$.message.order.state",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "Created",
+          "Accepted",
+          "In-progress",
+          "Completed",
+          "Cancelled"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_BUILDING",
+        "attr": "$.message.order.billing.address.building",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CITY",
+        "attr": "$.message.order.billing.address.city",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_STATE_17",
+        "attr": "$.message.order.billing.address.state",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_COUNTRY",
+        "attr": "$.message.order.billing.address.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_AREA_CODE",
+        "attr": "$.message.order.billing.address.area_code",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_LOCALITY",
+        "attr": "$.message.order.billing.address.locality",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME",
+        "attr": "$.message.order.billing.address.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_PHONE",
+        "attr": "$.message.order.billing.phone",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_NAME_23",
+        "attr": "$.message.order.billing.name",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_EMAIL",
+        "attr": "$.message.order.billing.email",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_CREATED_AT",
+        "attr": "$.message.order.billing.created_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_UPDATED_AT",
+        "attr": "$.message.order.billing.updated_at",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID_27",
+        "attr": "$.message.order.provider.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE",
+        "enumList": [
+          "Delivery",
+          "Self-Pickup",
+          "Delivery and Self-Pickup"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE",
+        "enumList": [
+          "Pending",
+          "Packed",
+          "Pickup-approved",
+          "Pickup-rejected",
+          "Order-picked-up",
+          "Out-for-delivery",
+          "Order-delivered",
+          "RTO-Initiated",
+          "RTO-Delivered",
+          "RTO-Disposed"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].state.descriptor.code",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_BREAKUPONDCORGTITLE_TYPE",
+        "enumList": [
+          "item",
+          "delivery",
+          "packing",
+          "tax",
+          "misc",
+          "discount",
+          "discount_f",
+          "tax_f",
+          0
+        ],
+        "enumPath": "$.message.order.quote.breakup[*]['@ondc/org/title_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT",
+        "enumList": [
+          0,
+          99
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.available.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT_6",
+        "enumList": [
+          0,
+          10
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.maximum.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE_7",
+        "enumList": [
+          "Pending",
+          "Packed",
+          "Pickup-approved",
+          "Pickup-rejected",
+          "Order-picked-up",
+          "Out-for-delivery",
+          "Order-delivered",
+          "RTO-Initiated",
+          "RTO-Delivered",
+          "RTO-Disposed"
+        ],
+        "enumPath": "$.message.order.cancellation_terms[*].fulfillment_state.descriptor.code",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE_8",
+        "enumList": [
+          "ON-ORDER",
+          "ON-FULFILLMENT",
+          "POST-FULFILLMENT"
+        ],
+        "enumPath": "$.message.order.payment.type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_SETTLEMENT_TYPE",
+        "enumList": [
+          "upi",
+          "neft",
+          "rtgs",
+          "wallet",
+          "netbanking",
+          "paylater"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/settlement_details'][*].settlement_type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENTONDCORGBUYER_APP_FINDER_FEE_TYPE",
+        "enumList": [
+          "percent",
+          "amount"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/buyer_app_finder_fee_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COLLECTED_BY",
+        "enumList": [
+          "BAP",
+          "BPP"
+        ],
+        "enumPath": "$.message.order.payment.collected_by",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_STATUS",
+        "enumList": [
+          "PAID",
+          "NOT-PAID"
+        ],
+        "enumPath": "$.message.order.payment.status",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENTONDCORGSETTLEMENT_BASIS",
+        "enumList": [
+          "shipment",
+          "delivery",
+          "return_window_expiry"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/settlement_basis']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_STATE",
+        "enumList": [
+          "Created",
+          "Accepted",
+          "In-progress",
+          "Completed",
+          "Cancelled"
+        ],
+        "enumPath": "$.message.order.state",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ],
+    "on_cancel": [
+      {
+        "_NAME_": "REQUIRED_CONTEXT_DOMAIN",
+        "attr": "$.context.domain",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_COUNTRY",
+        "attr": "$.context.country",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_4",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_ACTION_5",
+        "attr": "$.context.action",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_ID",
+        "attr": "$.context.bap_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BAP_URI",
+        "attr": "$.context.bap_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_ID",
+        "attr": "$.context.bpp_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_BPP_URI",
+        "attr": "$.context.bpp_uri",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TRANSACTION_ID",
+        "attr": "$.context.transaction_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_MESSAGE_ID",
+        "attr": "$.context.message_id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TIMESTAMP",
+        "attr": "$.context.timestamp",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_CONTEXT_TTL",
+        "attr": "$.context.ttl",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_STATE",
+        "attr": "$.message.order.state",
+        "_RETURN_": "attr are present && attr all in enumList",
+        "enumList": [
+          "Cancelled"
+        ]
+      },
+      {
+        "_NAME_": "REQUIRED_MESSAGE_ID",
+        "attr": "$.message.order.id",
+        "_RETURN_": "attr are present"
+      },
+      {
+        "_NAME_": "VALID_ENUM_CONTEXT_DOMAIN",
+        "enumList": [
+          "ONDC:RET10",
+          "ONDC:RET11",
+          "ONDC:RET12",
+          "ONDC:RET13",
+          "ONDC:RET14",
+          "ONDC:RET15",
+          "ONDC:RET16",
+          "ONDC:RET17",
+          "ONDC:RET18",
+          "ONDC:RET19"
+        ],
+        "enumPath": "$.context.domain",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_STATE",
+        "enumList": [
+          "Cancelled"
+        ],
+        "enumPath": "$.message.order.state",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE",
+        "enumList": [
+          "Delivery",
+          "Self-Pickup",
+          "Delivery and Self-Pickup"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE",
+        "enumList": [
+          "Cancelled",
+          "RTO-Initiated",
+          "RTO-Delivered",
+          "RTO-Disposed"
+        ],
+        "enumPath": "$.message.order.fulfillments[*].state.descriptor.code",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_BREAKUPONDCORGTITLE_TYPE",
+        "enumList": [
+          "item",
+          "delivery",
+          "packing",
+          "tax",
+          "misc",
+          "discount",
+          "discount_f",
+          "tax_f",
+          0
+        ],
+        "enumPath": "$.message.order.quote.breakup[*]['@ondc/org/title_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT",
+        "enumList": [
+          0,
+          99
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.available.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COUNT_7",
+        "enumList": [
+          0,
+          10
+        ],
+        "enumPath": "$.message.order.quote.breakup[*].item.quantity.maximum.count",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE_8",
+        "enumList": [
+          "ON-ORDER",
+          "ON-FULFILLMENT",
+          "POST-FULFILLMENT"
+        ],
+        "enumPath": "$.message.order.payment.type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_SETTLEMENT_TYPE",
+        "enumList": [
+          "upi",
+          "neft",
+          "rtgs",
+          "wallet",
+          "netbanking",
+          "paylater"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/settlement_details'][*].settlement_type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENTONDCORGBUYER_APP_FINDER_FEE_TYPE",
+        "enumList": [
+          "percent",
+          "amount"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/buyer_app_finder_fee_type']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_COLLECTED_BY",
+        "enumList": [
+          "BAP",
+          "BPP"
+        ],
+        "enumPath": "$.message.order.payment.collected_by",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_STATUS",
+        "enumList": [
+          "PAID",
+          "NOT-PAID"
+        ],
+        "enumPath": "$.message.order.payment.status",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_PAYMENTONDCORGSETTLEMENT_BASIS",
+        "enumList": [
+          "shipment",
+          "delivery",
+          "return_window_expiry"
+        ],
+        "enumPath": "$.message.order.payment['@ondc/org/settlement_basis']",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      }
+    ]
+  },
   "_SESSION_DATA_": {}
 }

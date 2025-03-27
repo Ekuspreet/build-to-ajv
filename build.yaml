@@ -3339,7 +3339,7 @@ x-tags:
     message:
       intent:
         tags:
-          - code: CATALOG_FULL
+          - code: cataog_full
             description: >-
               It is used communicate the intent for a full catalog refresh.
               Required when the request is for full catalog refresh.
@@ -3358,7 +3358,7 @@ x-tags:
                 description: Description about the tags
                 reference: <PR/Issue/Discussion Links md format text>
             required: required
-          - code: CATALOG_INC
+          - code: catalog_inc
             description: >-
               It is used communicate the intent for a incremental catalog
               refresh. Required when the request is for incremental refresh.
@@ -3368,6 +3368,7 @@ x-tags:
                 description: Description about the tags
                 reference: <PR/Issue/Discussion Links md format text>
             required: required
+          - code: bap_features
   on_search:
     message:
       catalog:

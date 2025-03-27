@@ -26,10 +26,10 @@ export async function CREATE_BASE_VALIDATIONS(
 	);
 	const data = yaml.load(file) as Record<string, Val>;
 	const output: any = {};
-	const tagData = generateTagsValidations(givenTags);
+	// const tagData = generateTagsValidations(givenTags);
 	for (const key in data) {
 		const attr = data[key].l1_attributes;
-		console.log(attr)
+		console.log(key, " " ,data[key])
 		let enums = data[key].l1_enums;
 		const enum_output: any[] = [];
 		if (!attr) {
@@ -88,8 +88,9 @@ export async function CREATE_BASE_VALIDATIONS(
 				_RETURN_: "enumPath all in enumList",
 			});
 		}
-		const tags = tagData[key] ?? [];
-		output[key] = [...attr_output, ...enum_output, ...tags];
+		// const tags = tagData[key] ?? [];
+		// output[key] = [...attr_output, ...enum_output, ...tags];
+		output[key] = [...attr_output, ...enum_output];
 	}
 	return output;
 	// writeFileSync(

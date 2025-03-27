@@ -8,7 +8,6 @@ import { JSONSchema7 } from "json-schema";
  * @returns An array of JSON paths as strings.
  */
 export function getAllJsonPaths(schema: JSONSchema7): string[] {
-	console.log("THIS IS BEIGN CAllED")
 	const paths: Set<string> = new Set();
 
 	/**
