@@ -12,8 +12,8 @@ search:
       - $.context.message_id
       - $.context.timestamp
       - $.context.ttl
-      - $.message.intent.fulfillment.end.location.area_code
-      - $.message.intent.fulfillment.end.location.area_code
+      - $.message.intent.payment['@ondc/org/buyer_app_finder_fee_type']
+      - $.message.intent.payment['@ondc/org/buyer_app_finder_fee_amount']
   l1_enums:
     - path: $.context.domain
       enums:
@@ -32,6 +32,17 @@ search:
         - code: Delivery
         - code: Self-Pickup
         - code: Delivery and Self-Pickup
+    - path: $.message.intent.fulfillment.type
+      enums:
+        - code: Delivery
+        - code: Self-Pickup
+        - code: Delivery and Self-Pickup
+    - path: $.message.intent.category.id
+      enums:
+        - code: CATEGORY
+    - path: $.message.intent.category.id
+      enums:
+        - code: SEARCH_TERM
 select:
   l1_attributes:
     B2C:
@@ -52,7 +63,7 @@ select:
       - $.message.order.provider.locations[*].id
       - $.message.order.items[*].id
       - $.message.order.items[*].quantity.count
-      - $.message.order.items[*].id
+      - $.message.order.items[*].location_id
       - $.message.order.fulfillments[*].end.gps
       - $.message.order.fulfillments[*].end.address.area_code
       - $.message.order.payment
@@ -101,7 +112,7 @@ init:
       - $.message.order.provider.locations[*].id
       - $.message.order.items[*].id
       - $.message.order.items[*].quantity.count
-      - $.message.order.items[*].id
+      - $.message.order.items[*].location_id
       - $.message.order.items[*].fulfillment_id
       - $.message.order.billing.address.building
       - $.message.order.billing.address.city
@@ -526,6 +537,11 @@ on_search:
       - $.message.intent['bpp/providers'][*].categories[*].descriptor.short_desc
       - $.message.intent['bpp/providers'][*].categories[*].descriptor.long_desc
   l1_enums:
+    - path: $.message.intent['bpp/descriptor'].code
+      enums:
+        - code: NP_TYPE
+        - code: ACCEPT_BAP_TERMS
+        - code: COLLECT_PAYMENT
     - path: $.message.intent['bpp/fulfillments'][*].type
       enums:
         - code: Delivery

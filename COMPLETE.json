@@ -69,13 +69,13 @@
         "_RETURN_": "attr are present"
       },
       {
-        "_NAME_": "REQUIRED_MESSAGE_AREA_CODE",
-        "attr": "$.message.intent.fulfillment.end.location.area_code",
+        "_NAME_": "REQUIRED_MESSAGE_PAYMENTONDCORGBUYER_APP_FINDER_FEE_TYPE",
+        "attr": "$.message.intent.payment['@ondc/org/buyer_app_finder_fee_type']",
         "_RETURN_": "attr are present"
       },
       {
-        "_NAME_": "REQUIRED_MESSAGE_AREA_CODE_13",
-        "attr": "$.message.intent.fulfillment.end.location.area_code",
+        "_NAME_": "REQUIRED_MESSAGE_PAYMENTONDCORGBUYER_APP_FINDER_FEE_AMOUNT",
+        "attr": "$.message.intent.payment['@ondc/org/buyer_app_finder_fee_amount']",
         "_RETURN_": "attr are present"
       },
       {
@@ -104,6 +104,35 @@
           "Delivery and Self-Pickup"
         ],
         "enumPath": "$.message.intent.fulfillment.type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE_3",
+        "enumList": [
+          "Delivery",
+          "Self-Pickup",
+          "Delivery and Self-Pickup"
+        ],
+        "enumPath": "$.message.intent.fulfillment.type",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_ID",
+        "enumList": [
+          "CATEGORY"
+        ],
+        "enumPath": "$.message.intent.category.id",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
+        "_NAME_": "VALID_ENUM_MESSAGE_ID_5",
+        "enumList": [
+          "SEARCH_TERM"
+        ],
+        "enumPath": "$.message.intent.category.id",
         "_CONTINUE_": "!(enumPath are present)",
         "_RETURN_": "enumPath all in enumList"
       }
@@ -207,8 +236,8 @@
         "_RETURN_": "attr are present"
       },
       {
-        "_NAME_": "REQUIRED_MESSAGE_ID_18",
-        "attr": "$.message.order.items[*].id",
+        "_NAME_": "REQUIRED_MESSAGE_LOCATION_ID",
+        "attr": "$.message.order.items[*].location_id",
         "_RETURN_": "attr are present"
       },
       {
@@ -377,8 +406,8 @@
         "_RETURN_": "attr are present"
       },
       {
-        "_NAME_": "REQUIRED_MESSAGE_ID_18",
-        "attr": "$.message.order.items[*].id",
+        "_NAME_": "REQUIRED_MESSAGE_LOCATION_ID",
+        "attr": "$.message.order.items[*].location_id",
         "_RETURN_": "attr are present"
       },
       {
@@ -1880,6 +1909,17 @@
         "_RETURN_": "attr are present"
       },
       {
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE",
+        "enumList": [
+          "NP_TYPE",
+          "ACCEPT_BAP_TERMS",
+          "COLLECT_PAYMENT"
+        ],
+        "enumPath": "$.message.intent['bpp/descriptor'].code",
+        "_CONTINUE_": "!(enumPath are present)",
+        "_RETURN_": "enumPath all in enumList"
+      },
+      {
         "_NAME_": "VALID_ENUM_MESSAGE_TYPE",
         "enumList": [
           "Delivery",
@@ -1891,7 +1931,7 @@
         "_RETURN_": "enumPath all in enumList"
       },
       {
-        "_NAME_": "VALID_ENUM_MESSAGE_TYPE_2",
+        "_NAME_": "VALID_ENUM_MESSAGE_TYPE_3",
         "enumList": [
           "Delivery",
           "Self-Pickup",
@@ -1917,7 +1957,7 @@
         "_RETURN_": "enumPath all in enumList"
       },
       {
-        "_NAME_": "VALID_ENUM_MESSAGE_CODE",
+        "_NAME_": "VALID_ENUM_MESSAGE_CODE_5",
         "enumList": [
           "Disc_Pct",
           "Disc_Amt",

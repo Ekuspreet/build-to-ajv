@@ -605,7 +605,8 @@ paths:
                 message:
                   type: object
                   properties:
-                    $ref: '#/components/schemas/Catalog'
+                    intent:
+                      $ref: '#/components/schemas/Catalog'
               required:
                 - context
                 - message

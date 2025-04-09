@@ -12,7 +12,7 @@ const run = async () => {
 		"ondc-code-generator/dist/types/compiler-types"
 	);
 	var compiler = new ConfigCompiler(SupportedLanguages.Typescript);
-	const build = readFileSync("./build.yaml", "utf8");
+	const build = readFileSync("./updatedBuild.yaml", "utf8");
 	await compiler.initialize(build);
 	const paths = await compiler.generateValidPaths();
 	console.log(paths)
@@ -21,7 +21,7 @@ const run = async () => {
 	await CREATE_FIRST();
 
 	const t = yaml.load(build) as any;
-	// const tags = tagsFromApiObj(t["x-tags"]);
+	const tags = tagsFromApiObj(t["x-tags"]);
 	const apiListForDifference = {
 		// search: "$.message.intent.fulfillment.vehicle.category",
 		// on_search:
